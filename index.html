@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>cody’s travel notes</title>
+<meta name="description" content="인스타 카드뉴스의 원문 — 네이버 블로그 「코디의 여행 정리노트」">
+<style>
+  @font-face { font-family: "Pretendard"; font-weight: 400; src: url("fonts/Pretendard-Regular.woff2") format("woff2"); }
+  @font-face { font-family: "Pretendard"; font-weight: 600; src: url("fonts/Pretendard-SemiBold.woff2") format("woff2"); }
+  @font-face { font-family: "Pretendard"; font-weight: 700; src: url("fonts/Pretendard-Bold.woff2") format("woff2"); }
+  :root { --bg: #FFFFFF; --ink: #141414; --sub: #6B6B6B; --line: #ECECEC; --chip: #F3F3F3; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #111111; --ink: #F2F2F2; --sub: #A0A0A0; --line: #262626; --chip: #1E1E1E; }
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--ink); }
+  body { font-family: "Pretendard", -apple-system, "Apple SD Gothic Neo", sans-serif; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 480px; margin: 0 auto; padding: 36px 0 40px; }
+  header { text-align: center; padding: 0 16px; }
+  .logo { font-weight: 700; font-size: 26px; letter-spacing: -.01em; margin: 0; }
+  .blog { margin: 8px 0 4px; font-size: 14px; color: var(--sub); }
+  .hint { margin: 14px 0 0; font-size: 13.5px; line-height: 1.6; }
+  .bar { display: flex; flex-direction: column; gap: 10px; padding: 22px 16px 12px; }   /* 종류 버튼과 보기 버튼을 두 줄로 — 한 줄이면 390pt 에서 「패키지」가 가려졌다 */
+  .row2 { display: flex; align-items: center; justify-content: space-between; }
+  .count { font-size: 13px; color: var(--sub); }
+  .chips { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; }
+  .chips button, .view button { font: inherit; font-size: 13px; font-weight: 600; border: 0; border-radius: 999px; padding: 7px 11px;
+                                 background: var(--chip); color: var(--ink); cursor: pointer; white-space: nowrap; }
+  .chips button[aria-pressed="true"], .view button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+  .view { display: flex; gap: 4px; flex: none; }
+  ul { list-style: none; margin: 0; padding: 0; }
+  a { color: inherit; text-decoration: none; }
+  /* 격자 — 인스타 프로필과 같은 3:4 칸 */
+  .grid ul { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+  .grid li img { width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: cover; display: block; background: var(--chip); }
+  .grid .meta { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  /* 목록 — 표지 + 제목 */
+  .list ul { padding: 0 16px; }
+  .list li a { display: flex; gap: 14px; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--line); }
+  .list li img { width: 72px; height: 96px; object-fit: cover; border-radius: 6px; flex: none; background: var(--chip); }
+  .list .meta { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+  .list .meta b { font-size: 15.5px; font-weight: 600; }
+  .list .sub { font-size: 12.5px; color: var(--sub); }
+  .list .go { font-size: 12.5px; font-weight: 600; margin-top: 2px; }
+  li[hidden] { display: none !important; }
+  footer { text-align: center; padding: 28px 16px 0; font-size: 13px; color: var(--sub); }
+  footer a { font-weight: 600; color: var(--ink); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <p class="logo">cody’s travel notes</p>
+    <p class="blog">네이버 블로그 「코디의 여행 정리노트」</p>
+    <p class="hint">인스타에서 본 표지를 누르면<br>그 글의 블로그 원문으로 이동해요.</p>
+  </header>
+  <div class="bar">
+    <div class="chips" role="group" aria-label="종류"><button type="button" data-k="" aria-pressed="true">전체</button><button type="button" data-k="숙소" aria-pressed="false">숙소</button><button type="button" data-k="투어" aria-pressed="false">투어</button><button type="button" data-k="맛집" aria-pressed="false">맛집</button><button type="button" data-k="내돈내산" aria-pressed="false">내돈내산</button></div>
+    <div class="row2"><span class="count" id="cnt">글 3편</span>
+    <div class="view" role="group" aria-label="보기">
+      <button type="button" data-v="grid" aria-pressed="true">격자</button>
+      <button type="button" data-v="list" aria-pressed="false">목록</button>
+    </div></div>
+  </div>
+  <main id="m" class="grid"><ul><li data-tags="숙소"><a href="https://blog.naver.com/happywhitehand/224454068727" target="_blank" rel="noopener"><img src="covers/224454068727.jpg" alt="제주공항 차로 약 7분, 사우나 있는 연동 호텔" loading="lazy" width="540" height="720"><span class="meta"><b>제주썬 호텔</b><span class="sub">숙소 · 10월 26일</span><span class="go">블로그 글 보기 ›</span></span></a></li><li data-tags="투어"><a href="https://blog.naver.com/happywhitehand/224454063820" target="_blank" rel="noopener"><img src="covers/224454063820.jpg" alt="토요일 드론쇼, 요트 위에서 봐요" loading="lazy" width="540" height="720"><span class="meta"><b>부산 요트투어 (위드요트 · 요트홀릭)</b><span class="sub">투어 · 10월 26일</span><span class="go">블로그 글 보기 ›</span></span></a></li><li data-tags="맛집 내돈내산"><a href="https://blog.naver.com/happywhitehand/224453990247" target="_blank" rel="noopener"><img src="covers/224453990247.jpg" alt="츠케멘 한 그릇, 4단계로 맛을 바꿔요" loading="lazy" width="540" height="720"><span class="meta"><b>츠지타 에비스점</b><span class="sub">맛집 · 내돈내산 · 10월 26일</span><span class="go">블로그 글 보기 ›</span></span></a></li></ul></main>
+  <footer><a href="https://blog.naver.com/happywhitehand/" target="_blank" rel="noopener">블로그 전체 글 보기 ›</a></footer>
+</div>
+<script>
+  const m = document.getElementById('m');
+  document.querySelectorAll('.view button').forEach(b => b.addEventListener('click', () => {
+    m.className = b.dataset.v;
+    document.querySelectorAll('.view button').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+    try { localStorage.setItem('view', b.dataset.v); } catch (e) {}
+  }));
+  document.querySelectorAll('.chips button').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('.chips button').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+    document.querySelectorAll('main li').forEach(li => { li.hidden = !!b.dataset.k && !li.dataset.tags.split(' ').includes(b.dataset.k); });
+    document.getElementById('cnt').textContent = `글 ${document.querySelectorAll('main li:not([hidden])').length}편`;
+  }));
+  try { const v = localStorage.getItem('view'); if (v) document.querySelector(`.view button[data-v="${v}"]`).click(); } catch (e) {}
+</script>
+</body>
+</html>
